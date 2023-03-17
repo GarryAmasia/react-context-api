@@ -7,8 +7,8 @@ import Home from "./components/Home";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <div className="App">
+        <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/cart" element={<Cart />}></Route>

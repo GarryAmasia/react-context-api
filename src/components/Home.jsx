@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { faker } from "@faker-js/faker";
 import SingleProduct from "./SingleProduct";
 
+faker.seed(100);
+
 const Home = () => {
   const productsArray = [...Array(20)].map(() => {
     return {
@@ -13,11 +15,20 @@ const Home = () => {
   });
   const [products] = useState(productsArray);
   // console.log(products);
+  const [cart, setCart] = useState([]);
+  console.log(cart);
 
   return (
     <div className="productContainer">
-      {products.map((product) => {
-        return <SingleProduct product={product} />;
+      {products.map((product, i) => {
+        return (
+          <SingleProduct
+            key={i}
+            product={product}
+            cart={cart}
+            setCart={setCart}
+          />
+        );
       })}
     </div>
   );

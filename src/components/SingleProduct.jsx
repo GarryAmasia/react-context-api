@@ -1,7 +1,7 @@
 import React from "react";
 
-const SingleProduct = ({ product }) => {
-  console.log(product);
+const SingleProduct = ({ product, cart, setCart }) => {
+  //   console.log(product);
   return (
     <div className="products">
       <img src={product.image} alt={product.name} />
@@ -9,7 +9,18 @@ const SingleProduct = ({ product }) => {
         <span style={{ fontWeight: "700" }}>{product.name}</span>
         <span>{product.price}</span>
       </div>
-      <button className="add">add to chart</button>
+      {cart.includes(product) ? (
+        <button
+          className="add"
+          onClick={() => setCart(cart.filter((c) => c.id !== product.id))}
+        >
+          Remove from cart
+        </button>
+      ) : (
+        <button className="add" onClick={() => setCart([...cart, product])}>
+          add to chart
+        </button>
+      )}
     </div>
   );
 };
