@@ -1,6 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { context } from "../Context";
 
-const SingleProduct = ({ product, cart, setCart }) => {
+const SingleProduct = ({ product }) => {
+  const { cart, setCart } = useContext(context);
+
   //   console.log(product);
   return (
     <div className="products">
